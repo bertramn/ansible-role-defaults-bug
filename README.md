@@ -1,11 +1,10 @@
+A full playbook directory structure is required to replicate the issue. The test case can be found on GitHub under [bertramn/ansible-role-defaults-bug](https://github.com/bertramn/ansible-role-defaults-bug.git).
 
-A default value assigned to a variable inside a role changes without any other declaration inside another role.
+In this test case is a role called `fancy` which defines a default variable `important_var` with the value of `role_path` which is specific to the execution context of each role. The variable is only ever defined once in the entire play environment.
 
-I created the [ansible-role-defaults-bug](https://github.com/bertramn/ansible-role-defaults-bug.git) test case on GitHub to demonstrate the exhibited behaviour.
+The other role is called `pants` and for the intends of this test will only reference this variable in a debug statement.
 
-In this test case is a role called `fancy` which defines a default variable `important_var` with the value of `role_path` which is specific to the execution context of each role.
-
-The other role is called `pants` and for the intends of this test will only reference this variable.
+Running the playbook the variable changes its value without any reassignment in the main play or any other role. It is also undefined in the main play context.
 
 ```
 inventory/
