@@ -1,0 +1,8 @@
+---
+- name: print the important variable value in the fancy role
+  debug: var=important_var
+
+- name: force to set the important variable
+  set_fact:
+    important_var: "{{ role_path }}"
+  when: workaround | default(False)

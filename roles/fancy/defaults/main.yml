@@ -1,0 +1,2 @@
+---
+important_var: "{{ role_path }}"

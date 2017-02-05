@@ -1,0 +1,8 @@
+---
+- name: print the important variable value in the pants role
+  debug: var=important_var
+
+- name: check important variable was defined in fancy role
+  fail: msg="expecting a fancy folder but not a {{ important_var | basename }} value"
+  ignore_errors: yes
+  when: "{{ ( important_var | basename ) != 'fancy' }}"

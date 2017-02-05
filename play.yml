@@ -1,0 +1,10 @@
+---
+- hosts: test
+  connection: local
+  gather_facts: no  
+  roles:
+    - fancy
+    - pants
+  tasks:
+    - name: print the important variable value in the main playbook
+      debug: var=important_var
